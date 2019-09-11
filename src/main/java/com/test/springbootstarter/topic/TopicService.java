@@ -31,7 +31,8 @@ public class TopicService {
     }
 
     public void addTopic(Topic topic){
-        this.list.add(topic);
+        //this.list.add(topic);
+        topicRepository.save(topic);
     }
 
     public void updateTopic(String id, Topic topic){

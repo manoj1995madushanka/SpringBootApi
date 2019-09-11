@@ -1,10 +1,8 @@
-package com.test.springbootstarter.topic;
+package com.example.secondChance.Topic;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-
-import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -14,22 +12,22 @@ public class TopicController {
     private TopicService topicService;
 
     @RequestMapping("/topics")
-    public List<Topic> getAllTopics(){
+    public List<Topics> getAllTopics(){
         return this.topicService.getAllTopics();
     }
 
     @RequestMapping("/topics/{id}")
-    public Topic getTopic(@PathVariable("id") String id){
+    public Topics getTopic(@PathVariable("id") String id){
         return this.topicService.getTopic(id);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "topics")
-    public void addTopic(@RequestBody Topic topic){
+    public void addTopic(@RequestBody Topics topic){
         topicService.addTopic(topic);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value= "topics/{id}")
-    public void updateTopic(@RequestBody Topic topic, @PathVariable("id") String id){
+    public void updateTopic(@RequestBody Topics topic, @PathVariable("id") String id){
         topicService.updateTopic(id, topic);
     }
 
@@ -38,3 +36,4 @@ public class TopicController {
         topicService.deleteTopic(id);
     }
 }
+
