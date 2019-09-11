@@ -1,5 +1,6 @@
 package com.test.springbootstarter.topic;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -8,6 +9,10 @@ import java.util.List;
 
 @Service
 public class TopicService {
+
+    @Autowired
+    private TopicRepository topicRepository;
+
     private List<Topic> list = new ArrayList<>(Arrays.asList(
             new Topic("senuri","science","face cute"),
             new Topic("sachini","science","too fat"),
@@ -15,7 +20,10 @@ public class TopicService {
     ));
 
     public List<Topic> getAllTopics(){
-        return this.list;
+        //return this.list;
+        List<Topic> topics= new ArrayList<>();
+        topicRepository.findAll().forEach(topics::add);
+        return topics;
     }
 
     public Topic getTopic(String id){
